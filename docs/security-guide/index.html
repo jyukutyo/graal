@@ -690,17 +690,7 @@ when calling the <code>bin/lli</code> binary by specifying the <code>--llvm.mana
 during context creation and does not need the <code>allowNativeAccess</code> privilege.</p>
 
 <h2 id="security-caveats">Security Caveats</h2>
-
-<h3 id="native-image-heap">Native Image Heap</h3>
-<p>The native image builder executes the static initializers of classes at build
-time and persists the state in the native image heap. This means that any
-information that is obtained in static initializers becomes part of the native
-image executable. This can lead to unintentionally including properties of the
-build environment, such as environment variables in the image heap.</p>
-
-<p>Developers can request static initializers to be re-run at runtime by either
-specifying the <code>--initialize-at-run-time</code> CLI parameter when building a native
-image, or making use of the <code>RuntimeClassInitialization</code> API.</p>
+<p>In this section we address security caveats that are specific to GraalVM Enterprise Edition.</p>
 
 <h3 id="sharing-execution-engines">Sharing Execution Engines</h3>
 <p>Application developers may choose to share execution engines among execution
