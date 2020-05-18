@@ -689,6 +689,22 @@ version, see <a href="https://github.com/oracle/truffleruby/blob/vm-19.2.0/doc/u
 <pre><code class="language-bash">$ sudo apt-get install make gcc
 </code></pre>
 
+<h3 id="mandriva-based-and-other-linux-distributions">Mandriva-based and other Linux distributions</h3>
+
+<p>Note that such distributions are not tested and not <a href="../../README.md#system-compatibility">supported</a>.</p>
+
+<p>First, install the <code>make</code> and <code>gcc</code> dependencies.</p>
+
+<p>Mandriva uses a not-yet-upstreamed patch to let <code>clang</code> find the GCC installation
+(see <a href="https://github.com/oracle/truffleruby/issues/2009#issuecomment-630019082">this comment</a>).
+Therefore the internal LLVM toolchain cannot find the necessary <code>libgcc_s</code> by default.
+The proper fix is for those distributions to upstream their changes to LLVM.</p>
+
+<p>A workaround is to create a symlink explicitly so that the LLVM toolchain can find <code>libgcc_s</code>:</p>
+<pre><code class="language-bash">$ cd /usr/lib/gcc
+$ sudo ln -s x86_64-mandriva-linux-gnu x86_64-linux-gnu
+</code></pre>
+
 <h3 id="macos">macOS</h3>
 
 <p>On macOS, make sure you have installed the command line developer tools from Xcode:</p>

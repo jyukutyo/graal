@@ -30,8 +30,20 @@ building a native image.
 * `-H:+DashboardPointsTo` - to dump the point-to analysis information
 
 By selecting just a subset of all data, you receive a smaller dump file.
+
+### Hello World sample application
+
+It is possible to test the features of GraalVM Dashboard in sample application provided here:
+
+1. Download <a href=/docs/tools/dashboard/docs/sample.zip download>Hello world sample</a> application
+2. Unzip it on your local disk
+3. Use **Add Data** button to open `sample.dump` you recently downloaded
+
+Or using direct [link](/docs/tools/dashboard/?dumpUrl=http://graalvm.org/docs/tools/dashboard/docs/sample/sample.dump).
+
 For demonstration purposes the following `Hello` program will be used:
-```
+
+```java
 public class Hello {
 
     static Hello hello = new Hello();
@@ -82,6 +94,7 @@ class StdOutPrinter extends Printer {
     }
 }
 ```
+
 An abstract base `Printer` class, which has one undefined `Print()` method that
 takes a String as an argument, and two implementations of this class:
 `NullPrinter()` which returns no data type and `StdOutPrinter()` which uses a
@@ -94,10 +107,12 @@ bigger than zero, prints it with a standard output. Otherwise, create a
 `NullPrinter`.
 
 Compile it and build a native image:
+
 ```
 javac Hello.java
 native-image -H:DashboardDump=dashboard.dump -H:+DashboardAll Hello
 ```
+
 The `dashboard.dump` file dumped during the native image build will be in Native
 Image Dump Format, which is the only format readable by the tool.
 
@@ -106,7 +121,7 @@ To open the dumped file in GraalVM Dashboard, click on the "Add data" button
 on the left, which will open a dialog box. Here you can select the dumped file,
 obtained during the native-image build:
 <br>
-<img src="/resources/img/import_dump_file.png" alt="import-dump" width="450" height=200/>
+<img src="/docs/tools/dashboard/resources/img/import_dump_file.png" alt="import-dump" width="450" height=200/>
 
 ### Terms of Use
 The server that hosts the GraalVM website delivers an HTML version of the GraalVM

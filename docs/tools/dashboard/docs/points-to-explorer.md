@@ -9,4 +9,4 @@ user to ask questions like "Where was this method called", "Why is exactly this
 implementation of the method called" for virtual calls. The search expands the
 graph recursively until reaching the entry-point into the application.
 
-<img src="/resources/img/points-to-exploration.png" alt="points-to-explorer" width="850" height=500/>
+<img src="/docs/tools/dashboard/resources/img/points-to-exploration.png" alt="points-to-explorer" width="850" height=500/>
