@@ -533,16 +533,16 @@ $(document).ready(function(){
 For Oracle GraalVM Enterprise Edition users, find the installation instructions <a href="https://docs.oracle.com/en/graalvm/enterprise/20/guide/overview/install/installation-windows.html">here</a>.</p>
 
 <ol>
-  <li>Navigate to the <a href="https://github.com/graalvm/graalvm-ce-builds/releases">GraalVM Releases repository on GitHub</a>. Depending on the workload, select <strong>graalvm-ce-java8-windows-amd64-20.0.0.zip</strong> or <strong>graalvm-ce-java11-windows-amd64-20.0.0.zip</strong> and download. We will focus on GraalVM CE based on OpenJDK 8.</li>
+  <li>Navigate to the <a href="https://github.com/graalvm/graalvm-ce-builds/releases">GraalVM Releases repository on GitHub</a>. Depending on the workload, select <strong>graalvm-ce-java8-windows-amd64-20.1.0.zip</strong> or <strong>graalvm-ce-java11-windows-amd64-20.1.0.zip</strong> and download. We will focus on GraalVM Community based on OpenJDK 8.</li>
   <li>Unzip the archive to your file system.</li>
   <li>Configure <code>JAVA_HOME</code> and <code>PATH</code> environment variables. Setting environment variables via the command line will work the same way for Windows 7, 8 and 10.
     <ul>
       <li>Add the GraalVM <strong>bin</strong> folder to the <code>PATH</code> environment variable:
-        <pre><code>setx /M PATH "C:\Progra~1\Java\graalvm-ce-java8-20.0.0\bin;%PATH%"
+        <pre><code>setx /M PATH "C:\Progra~1\Java\graalvm-ce-java8-20.1.0\bin;%PATH%"
 </code></pre>
       </li>
       <li>Set the <code>JAVA_HOME</code> environment variable to resolve to the GraalVM installation directory:
-        <pre><code>setx /M JAVA_HOME "C:\Progra~1\Java\graalvm-ce-java8-20.0.0"
+        <pre><code>setx /M JAVA_HOME "C:\Progra~1\Java\graalvm-ce-java8-20.1.0"
 </code></pre>
         <p>Note that the <code>/M</code> flag, equivalent to <code>-m</code>, requires elevated user privileges.</p>
       </li>

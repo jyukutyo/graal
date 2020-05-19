@@ -704,7 +704,7 @@ user    0m0.000s
 sys     0m0.000s
 </code></pre>
 
-<p>This snipped shows a timed execution of a “Hello World” program using the sl
+<p>This snipped shows a timed execution of a “Hello World” program using the <code>sl</code>
 launcher script, which runs SimpleLanguage on GraalVM, and using the native
 image. We can see that when running on GraalVM the execution takes 405ms. Since
 our SimpleLanguage program does just one print statement, we can conclude that
@@ -713,8 +713,7 @@ language itself. When using the native image we see that the execution takes
 only 4ms, showing two orders of magnitude faster startup than running on the
 GraalVM.</p>
 
-<p>For more information on the <code>native-image</code> tool consider reading the <a href="/docs/reference-manual/aot-compilation/">reference
-manual</a>.</p>
+<p>For more information on the <code>native-image</code> tool consider reading the <a href="/docs/reference-manual/aot-compilation/">reference manual</a>.</p>
 
 <h3 id="disable-simplelanguage-native-image-build">Disable SimpleLanguage Native Image Build</h3>
 
@@ -746,7 +745,7 @@ version of the GraalVM compiler, please follow these instructions:</p>
 
 <ol>
   <li>Download the latest <a href="https://github.com/graalvm/openjdk8-jvmci-builder/releases">JVMCI JDK 8</a> and point JAVA_HOME at it:
-    <pre><code class="language-shell">$ export JAVA_HOME=/path/to/openjdk1.8.0_212-jvmci-19.2-b01
+    <pre><code class="language-shell">$ export JAVA_HOME=/path/to/openjdk1.8.0_242-jvmci-20.1-b01
 </code></pre>
   </li>
   <li>Clone the “Graal” repository from SimpleLanguage folder:
@@ -771,7 +770,7 @@ $ git clone https://github.com/oracle/graal.git
 </code></pre>
   </li>
   <li>Run SimpleLanguage using the mx command:
-    <pre><code class="language-shell">$ mx -v --jdk=jvmci vm -cp /path/to/simplelanguage/launcher/target/launcher-19.3.0.2-SNAPSHOT.jar:/path/to/simplelanguage/language/target/simplelanguage.jar com.oracle.truffle.sl.launcher.SLMain  /path/to/simplelanguage/language/tests/SlScript.sl
+    <pre><code class="language-shell">$ mx -v --jdk=jvmci vm -cp /path/to/simplelanguage/launcher/target/launcher-20.1.0-SNAPSHOT.jar:/path/to/simplelanguage/language/target/simplelanguage.jar com.oracle.truffle.sl.launcher.SLMain  /path/to/simplelanguage/language/tests/SlScript.sl
 </code></pre>
   </li>
 </ol>
@@ -789,8 +788,8 @@ command line for both cases.</p>
 working directory is the <code>simplelanguage</code> directory, to run SimpleLanguage one
 should execute the following command:</p>
 
-<pre><code class="language-shell">$ JAVA_HOME/bin/java \
-    -cp launcher/target/launcher-19.3.0.2-SNAPSHOT.jar \
+<pre><code class="language-shell">$ $JAVA_HOME/bin/java \
+    -cp launcher/target/launcher-20.1.0-SNAPSHOT.jar \
     -Dtruffle.class.path.append=language/target/simplelanguage.jar \
     com.oracle.truffle.sl.launcher.SLMain language/tests/Add.sl
 </code></pre>
@@ -813,9 +812,9 @@ option. This disables the class path isolation, enabling the language
 implementation to be placed on the application class path. The command line can
 then look like the following.</p>
 
-<pre><code class="language-shell">$ JAVA_HOME/bin/java \
-    -XX:-UseJVMCIClassLoader \
-    -cp launcher/target/launcher-19.3.0.2-SNAPSHOT.jar:language/target/simplelanguage.jar \
+<pre><code class="language-shell">$ $JAVA_HOME/bin/java \
+    -XX:-UseJVMCIClassLoader -Dgraalvm.locatorDisabled=true \
+    -cp launcher/target/launcher-20.1.0-SNAPSHOT.jar:language/target/simplelanguage.jar \
     com.oracle.truffle.sl.launcher.SLMain language/tests/Add.sl
 </code></pre>
 
@@ -831,8 +830,8 @@ working directory is the <code>simplelanguage</code> directory and the Truffle A
 GraalVM SDK jars are present in that directory, one can execute SimpleLanguage
 with the following command:</p>
 
-<pre><code class="language-shell">$ JAVA_HOME/bin/java \
-    -cp graal-sdk-19.3.0.2.jar:truffle-api-19.3.0.2.jar:launcher/target/launcher-19.3.0.2-SNAPSHOT.jar:language/target/simplelanguage.jar \
+<pre><code class="language-shell">$ $JAVA_HOME/bin/java \
+    -cp graal-sdk-20.1.0.jar:truffle-api-20.1.0.jar:launcher/target/launcher-20.1.0-SNAPSHOT.jar:language/target/simplelanguage.jar \
     com.oracle.truffle.sl.launcher.SLMain language/tests/Add.sl
 </code></pre>
 

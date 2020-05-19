@@ -539,31 +539,31 @@ single user, so administrator privileges are not required. However, if
 GraalVM is meant to become a default JDK, administrator privileges
 are required. The JDK installation path is <code>/Library/Java/JavaVirtualMachines/&lt;graalvm&gt;/Contents/Home</code>.</p>
 
-<p>Follow these steps to install GraalVM CE on x86 64-bit macOS operating systems.
+<p>Follow these steps to install GraalVM Community on x86 64-bit macOS operating systems.
 For Oracle GraalVM Enterprise Edition users, find the installation instructions <a href="https://docs.oracle.com/en/graalvm/enterprise/20/guide/overview/install/installation-macos.html">here</a>.</p>
 
 <ol>
-  <li>Navigate to <a href="https://github.com/graalvm/graalvm-ce-builds/releases">GraalVM Releases repository on GitHub</a>. Depending on the workload, select <strong>graalvm-ce-java8-darwin-amd64-20.0.0.tar.gz</strong>  or <strong>graalvm-ce-java8-darwin-amd64-20.0.0.tar.gz</strong> and download. We will focus on GraalVM CE based on OpenJDK 8.</li>
+  <li>Navigate to <a href="https://github.com/graalvm/graalvm-ce-builds/releases">GraalVM Releases repository on GitHub</a>. Depending on the workload, select <strong>graalvm-ce-java8-darwin-amd64-20.1.0.tar.gz</strong>  or <strong>graalvm-ce-java8-darwin-amd64-20.1.0.tar.gz</strong> and download. We will focus on GraalVM Community based on OpenJDK 8.</li>
   <li>Extract the archive to your file system. To extract it in the Downloads directory from the console, type:
-    <pre><code>~/Downloads$ tar -xvf graalvm-ce-java8-darwin-amd64-20.0.0.tar.gz
+    <pre><code>~/Downloads$ tar -xvf graalvm-ce-java8-darwin-amd64-20.1.0.tar.gz
 </code></pre>
     <p>Alternatively, open the file in Finder.</p>
   </li>
   <li>Move the obtained GraalVM to its proper location, the <code>/Library/Java/JavaVirtualMachines</code> directory. Since this is a system directory, <code>sudo</code> is required:
-    <pre><code>~/Downloads$ sudo mv graalvm-ce-java8-20.0.0 /Library/Java/JavaVirtualMachines
+    <pre><code>~/Downloads$ sudo mv graalvm-ce-java8-20.1.0 /Library/Java/JavaVirtualMachines
 </code></pre>
     <p>To verify if the move is successful and to get a list of all installed JDKs, run  <code>/usr/libexec/java_home -V</code>.</p>
   </li>
   <li>Since there can be multiple JDKs installed on the machine, the next step is to configure the runtime environment.
     <ul>
       <li>Add the GraalVM <code>bin</code> folder to the <code>PATH</code> environment variable:
-        <pre><code>  $ export PATH=/Library/Java/JavaVirtualMachines/graalvm-ce-java8-20.0.0/Contents/Home/bin:$PATH
+        <pre><code>  $ export PATH=/Library/Java/JavaVirtualMachines/graalvm-ce-java8-20.1.0/Contents/Home/bin:$PATH
 </code></pre>
         <p>Verify whether you are using GraalVM with the echo command: <code>$ echo $PATH</code>.</p>
       </li>
       <li>Set the <code>JAVA_HOME</code> environment variable to resolve to the GraalVM installation directory:
-  <code>$ export JAVA_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-java8-20.0.0/Contents/Home</code>. Please also see the <a href="/docs/getting-started/note/">notice on <code>java_home</code></a> command.
-        <pre><code>  $ export JAVA_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-java8-20.0.0/Contents/Home
+  <code>$ export JAVA_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-java8-20.1.0/Contents/Home</code>. Please also see the <a href="/docs/getting-started/note/">notice on <code>java_home</code></a> command.
+        <pre><code>  $ export JAVA_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-java8-20.1.0/Contents/Home
 </code></pre>
         <p>Please also see the notice on <code>java_home</code> below.</p>
       </li>
@@ -577,7 +577,7 @@ The information property file, <em>Info.plist</em>, is in the top level <em>Cont
 folder. This means that GraalVM participates in the macOS specific
 <code>/usr/libexec/java_home</code> mechanism. Depending on other JDK installation(s)
 available, it is now possible that <code>/usr/libexec/java_home -v1.8</code> returns
-<code>/Library/Java/JavaVirtualMachines/graalvm-ce-java8-20.0.0/Contents/Home</code>.
+<code>/Library/Java/JavaVirtualMachines/graalvm-ce-java8-20.1.0/Contents/Home</code>.
 You can run <code>/usr/libexec/java_home -v1.8 -V</code> to see the complete list of 1.8
 JVMs available to the <code>java_home</code> command. This command appears to sort the JVMs
 in decreasing version order and chooses the top one as the default for the

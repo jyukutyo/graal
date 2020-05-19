@@ -716,8 +716,7 @@ available as an <a href="https://docs.oracle.com/en/graalvm/enterprise/20/guide/
 
 <h2 id="install-native-image">Install Native Image</h2>
 
-<p>Starting from GraalVM 19.0, Native Image was extracted from the base distribution.
-This functionality can be added to the core installation with <a href="/docs/reference-manual/graal-updater/">GraalVM Updater</a> utility in a similar way as other additional components.</p>
+<p>Native Image is distributed as a separate installable and can be added to the core installation with <a href="/docs/reference-manual/graal-updater/">GraalVM Updater</a> utility in a similar way as other additional components.</p>
 
 <p>For GraalVM Community users, install a component from the GitHub catalog by
 its name <code>gu install native-image</code>.</p>
@@ -1164,28 +1163,33 @@ and other optimizations enabled.</p>
 
 <h2 id="memory-management-configuration">Memory Management Configuration</h2>
 
-<p>When running a native image you can specify:
-<code>-Xmn</code> - to set the size of the young generation (the amount of memory that can be allocated without triggering a GC). The value is specified in bytes, suffix <code>k</code>, <code>m</code>, or <code>g</code> can be used for scaling for example: <code>-Xmn16M</code>, default <code>256M</code>.
+<p>One can explicitly specify the allowed amount of memory when running a native image.
+<code>-Xmn</code> - to set the size of the young generation (the amount of memory that can be allocated without triggering a GC). The value is specified in bytes, suffix <code>k</code>, <code>m</code>, or <code>g</code> can be used for scaling, e.g., <code>-Xmn16M</code>, default <code>256M</code>.
 <code>-Xmx</code> - maximum heap size in bytes. Note that this is not the maximum amount of consumed memory, because during GC the system can request more temporary memory, for example <code>-Xmx16M</code>, default unlimited.
 <code>-Xms</code> - minimum heap size in bytes. The value is specified in bytes, suffix <code>k</code>, <code>m</code>, or <code>g</code> can be used for scaling. Heap space that is unused will be retained for future heap usage, rather than being returned to the operating system.</p>
 
-<p><code>-XX:+PrintGC</code>: prints some information about garbage collections.
-<code>-XX:+VerboseGC</code>: prints detailed information about garbage collections.</p>
+<p>In addition, it is possible to fine-tune maximum memory to be used by an image. Set the percent value of physical
+memory using the <code>-R:MaximumHeapSizePercent=&lt;value&gt;</code> option. For more
+information, unfold the <code>native-image --expert-options-all</code> list and search for
+<code>-R:MaximumHeapSizePercent=&lt;value&gt;</code>,
+<code>-R:MaximumYoungGenerationSizePercent=&lt;value&gt;</code>,
+<code>-H:AllocationBeforePhysicalMemorySize=&lt;value&gt;</code> and other related options.</p>
+
+<p>As of version 20.1.0 option <code>-XX:MaxDirectMemorySize=...</code> was added to allow
+controlling the maximum size of direct buffer allocations.</p>
 
 <h2 id="low-latency-garbage-collection">Low Latency Garbage Collection</h2>
 
-<p>When using GraalVM Enterprise you can enable the experimental option to use a lower latency garbage collection implementation.
-A lower latency GC should improve the performance of the native image applications by reducing the stop-the-world pauses.</p>
+<p>When using GraalVM Enterprise you can enable the experimental option to use a
+lower latency garbage collection implementation. A lower latency GC should
+improve the performance of the native image applications by reducing the
+stop-the-world pauses.</p>
 
 <p>To enable it use the <code>-H:+UseLowLatencyGC</code> option when building a native image.</p>
 
-<p>Currently the lower latency GC works on Linux in the AMD64 builds.
-There are also a few limitations to which configurations it supports:</p>
-<ul>
-  <li>Weak and other special references are currently not supported. All references are treated as strong references instead.</li>
-  <li>Just-in-time (JIT) compiled code is not supported yet.</li>
-  <li>Setting the runtime heap size via <code>-Xms/-Xmx/-Xmn</code> is currently not supported. It is however possible to specify values for those options at image build time, e.g.: <code>-R:MinHeapSize=256m -R:MaxHeapSize=2g -R:MaxNewSize=128m</code>.</li>
-</ul>
+<p>Currently the lower latency GC works on Linux in the AMD64 builds. One can
+configure the default runtime heap size at image build time, e.g.,
+<code>-R:MinHeapSize=256m -R:MaxHeapSize=2g -R:MaxNewSize=128m</code>.</p>
 
 <p>You can use <code>-XX:+PrintGC</code>, <code>-XX:+VerboseGC</code> to get some information about garbage collections.</p>
 
@@ -1207,7 +1211,7 @@ Enterprise Edition? Run this command:</p>
 </code></pre>
 
 <p>The expected output should match the following:</p>
-<pre><code>com.oracle.svm.core.VM GraalVM 20.0.0 CE
+<pre><code>com.oracle.svm.core.VM GraalVM 20.1.0 CE
 </code></pre>
 
 <p><strong>Note:</strong>
@@ -1454,17 +1458,7 @@ accessible too.</p>
 <p>To find out more about generating heap dumps of the native image processes,
 refer to the <a href="/docs/reference-manual/native_heapdump/">step-by-step documentation</a>.</p>
 
-<h3 id="operational-information-for-native-images">Operational Information for Native Images</h3>
-
-<p><em>How can I specify the default amount of memory a native image can use when it gets executed?</em></p>
-<ul>
-  <li>To fine-tune maximum memory to be used by an image, set the percent value of physical
-memory using the <code>-R:MaximumHeapSizePercent=&lt;value&gt;</code> option. For more
-information, unfold the <code>native-image --expert-options-all</code> list and search for
-<code>-R:MaximumHeapSizePercent=&lt;value&gt;</code>,
-<code>-R:MaximumYoungGenerationSizePercent=&lt;value&gt;</code>,
-<code>-H:AllocationBeforePhysicalMemorySize=&lt;value&gt;</code> and other related options.</li>
-</ul>
+<h3 id="frequently-asked-questions">Frequently Asked Questions</h3>
 
 <p><em>When does it make sense to run in a Native Image instead of the JVM?</em></p>
 <ul>

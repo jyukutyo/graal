@@ -12,7 +12,7 @@ In the default configuration, cross-language interoperability requires bitcode
 to be compiled with the debug information enabled (`-g`), and the `-mem2reg`
 optimization is performed on the bitcode (compiled with at least `-O1`, or
 explicitly using the `opt` tool). These requirements can be overcome in a
-managed environment of GraalVM EE that allows native code to participate in the
+managed environment of GraalVM Enterprise that allows native code to participate in the
 polyglot programs, passing and receiving the data from any other supported
 language. In terms of security, the execution of native code in a managed
 environment passes with additional safety features: catching illegal pointer
@@ -21,14 +21,14 @@ accesses, accessing arrays outside of the bounds, etc..
 There are certain limitations and differences to the native execution depending on the GraalVM edition.
 Consider them respectively.
 
-### Limitations and Differences to Native Execution on Top of GraalVM CE
+### Limitations and Differences to Native Execution on Top of GraalVM Community
 
 The LLVM interpreter in GraalVM Community Edition environment allows executing LLVM bitcode within a
 multilingual context. Even though it aspires to be a generic LLVM runtime, there
 are certain fundamental and/or implementational limitations that users need to
 be aware of.
 
-The following restrictions and differences to native execution (i.e., bitcode compiled down to native code) exist when LLVM bitcode is executed with the LLVM interpreter on top of GraalVM CE:
+The following restrictions and differences to native execution (i.e., bitcode compiled down to native code) exist when LLVM bitcode is executed with the LLVM interpreter on top of GraalVM Community:
 
 * The GraalVM LLVM interpreter assumes that bitcode was generated to target the x86_64 architecture.
 * Bitcode should be the result of compiling C/C++ code using clang version 7, other compilers/languages, e.g., Rust, might have specific requirements that are not supported.
@@ -95,7 +95,7 @@ The following restrictions and differences to native execution (i.e., bitcode co
   * masked vector intrinsics: `llvm.masked.*`;
   * bit manipulation intrinsics: `llvm.bitreverse`, `llvm.fshl`, `llvm.fshr`.
 
-### Limitations and Differences to Managed Execution on Top of GraalVM EE
+### Limitations and Differences to Managed Execution on Top of GraalVM Enterprise
 
 A managed execution for LLVM intermediate representation code is GraalVM
 Enterprise Edition feature  and can be enabled with `--llvm.managed` command
@@ -110,7 +110,7 @@ surrounding system are routed through proper Truffle API and Java API calls.
   * Platform independent
     * Bitcode must be compiled for the a generic `linux_x86_64` target, using the provided musl libc library, on all platforms, regardless of the actual underlying operating system.
   * C++
-    * C++ is currently not supported in a managed mode.
+    * C++ on managed mode requires GraalVM 20.1 or newer
   * Native memory and code
     * Calls to native functions are not possible, thus only the functionality provided in the supplied musl libc and by the GraalVM LLVM interface is available.
     * Loading native libraries is not possible.

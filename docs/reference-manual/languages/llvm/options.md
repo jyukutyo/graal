@@ -12,9 +12,6 @@ can contain precompiled native libraries (`*.so`/`*.dylib`) and bitcode
 libraries (`*.bc`). Files with a relative path are looked up relative to
 `llvm.libraryPath`. Entries are delimited by `:`.
 
-`--llvm.enableLVI=<true/false>`: enable source-level symbol inspection in the
-debugger. This defaults to `false` as it can decrease run-time performance.
-
 `--llvm.managed` enable a managed execution mode for LLVM IR code, which means memory allocations from LLVM bitcode are done on the managed heap. [This article](https://medium.com/graalvm/safe-and-sandboxed-execution-of-native-code-f6096b35c360) explains the managed execution in every detail.
 
 `--version` prints the version and exit.

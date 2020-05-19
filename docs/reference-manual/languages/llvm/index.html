@@ -973,10 +973,11 @@ for more information.</p>
 you compiled to LLVM bitcode.
 To use this feature, please make sure to compile your program with debug information by specifying the <code>-g</code>
 argument when compiling with <code>clang</code> (the LLVM toolchain shipped with GraalVM will automatically enable
-debug info). This gives you the ability to step through the program’s source code and set breakpoints in it.
-To also be able to inspect the local and global variables of your program you may pass
-<code>--llvm.enableLVI=true</code> as argument to <code>lli</code>.
-This option is not enabled per default as it can significantly decrease your program’s run-time performance.</p>
+debug info). This gives you the ability to step through the program’s source code and set breakpoints in it.</p>
+
+<p>With GraalVM 20.0 and older, the option <code>--llvm.enableLVI=true</code> is needed for being able to inspect variables
+during debugging. This option is not enabled by default as it decreases the program’s run-time performance.
+Starting from GraalVM 20.1, this option is not needed anymore and thus deprecated.</p>
 
 <h2 id="llvm-compatibility">LLVM Compatibility</h2>
 
@@ -1020,9 +1021,6 @@ can contain precompiled native libraries (<code>*.so</code>/<code>*.dylib</code>
 libraries (<code>*.bc</code>). Files with a relative path are looked up relative to
 <code>llvm.libraryPath</code>. Entries are delimited by <code>:</code>.</p>
 
-<p><code>--llvm.enableLVI=&lt;true/false&gt;</code>: enable source-level symbol inspection in the
-debugger. This defaults to <code>false</code> as it can decrease run-time performance.</p>
-
 <p><code>--llvm.managed</code> enable a managed execution mode for LLVM IR code, which means memory allocations from LLVM bitcode are done on the managed heap. <a href="https://medium.com/graalvm/safe-and-sandboxed-execution-of-native-code-f6096b35c360">This article</a> explains the managed execution in every detail.</p>
 
 <p><code>--version</code> prints the version and exit.</p>
@@ -1047,7 +1045,7 @@ difference lies in safety guarantees and cross-language interoperability.</p>
 to be compiled with the debug information enabled (<code>-g</code>), and the <code>-mem2reg</code>
 optimization is performed on the bitcode (compiled with at least <code>-O1</code>, or
 explicitly using the <code>opt</code> tool). These requirements can be overcome in a
-managed environment of GraalVM EE that allows native code to participate in the
+managed environment of GraalVM Enterprise that allows native code to participate in the
 polyglot programs, passing and receiving the data from any other supported
 language. In terms of security, the execution of native code in a managed
 environment passes with additional safety features: catching illegal pointer
@@ -1056,14 +1054,14 @@ accesses, accessing arrays outside of the bounds, etc..</p>
 <p>There are certain limitations and differences to the native execution depending on the GraalVM edition.
 Consider them respectively.</p>
 
-<h3 id="limitations-and-differences-to-native-execution-on-top-of-graalvm-ce">Limitations and Differences to Native Execution on Top of GraalVM CE</h3>
+<h3 id="limitations-and-differences-to-native-execution-on-top-of-graalvm-community">Limitations and Differences to Native Execution on Top of GraalVM Community</h3>
 
 <p>The LLVM interpreter in GraalVM Community Edition environment allows executing LLVM bitcode within a
 multilingual context. Even though it aspires to be a generic LLVM runtime, there
 are certain fundamental and/or implementational limitations that users need to
 be aware of.</p>
 
-<p>The following restrictions and differences to native execution (i.e., bitcode compiled down to native code) exist when LLVM bitcode is executed with the LLVM interpreter on top of GraalVM CE:</p>
+<p>The following restrictions and differences to native execution (i.e., bitcode compiled down to native code) exist when LLVM bitcode is executed with the LLVM interpreter on top of GraalVM Community:</p>
 
 <ul>
   <li>The GraalVM LLVM interpreter assumes that bitcode was generated to target the x86_64 architecture.</li>
@@ -1177,7 +1175,7 @@ be aware of.</p>
   </li>
 </ul>
 
-<h3 id="limitations-and-differences-to-managed-execution-on-top-of-graalvm-ee">Limitations and Differences to Managed Execution on Top of GraalVM EE</h3>
+<h3 id="limitations-and-differences-to-managed-execution-on-top-of-graalvm-enterprise">Limitations and Differences to Managed Execution on Top of GraalVM Enterprise</h3>
 
 <p>A managed execution for LLVM intermediate representation code is GraalVM
 Enterprise Edition feature  and can be enabled with <code>--llvm.managed</code> command
@@ -1197,7 +1195,7 @@ surrounding system are routed through proper Truffle API and Java API calls.</p>
   </li>
   <li>C++
     <ul>
-      <li>C++ is currently not supported in a managed mode.</li>
+      <li>C++ on managed mode requires GraalVM 20.1 or newer</li>
     </ul>
   </li>
   <li>Native memory and code

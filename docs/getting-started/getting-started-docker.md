@@ -1,14 +1,14 @@
 ## Docker Containers
 
-The official Docker images for GraalVM CE are available from the Docker Hub:
+The official Docker images for GraalVM Community are available from the Docker Hub:
 [https://hub.docker.com/r/oracle/graalvm-ce/](https://hub.docker.com/r/oracle/graalvm-ce/).
 
-If you want to use the Docker container with GraalVM CE, use the `docker pull` command:
+If you want to use the Docker container with GraalVM Community, use the `docker pull` command:
 ```
 docker pull oracle/graalvm-ce:{{ site.product_version }}
 ```
 
-The image is based on Oracle Linux and has GraalVM CE downloaded, unzipped and made available.
+The image is based on Oracle Linux and has GraalVM Community downloaded, unzipped and made available.
 It means that Java, JavaScript, Node and the LLVM interpreter are available out of the box.
 
 You can start a container and enter the `bash` session with the following run command:
@@ -20,9 +20,9 @@ Check that `java`, `js` and other commands work as expected.
 ```
 → docker run -it oracle/graalvm-ce:{{ site.product_version }} bash
 bash-4.2# java -version
-openjdk version "1.8.0_242"
-OpenJDK Runtime Environment (build 1.8.0_242-b06)
-OpenJDK 64-Bit Server VM GraalVM CE 20.0.0-dev (build 25.242-b06-jvmci-20.0-b02, mixed mode)
+openjdk version "1.8.0_252"
+OpenJDK Runtime Environment (build 1.8.0_252-b09)
+OpenJDK 64-Bit Server VM GraalVM CE 20.1.0 (build 25.252-b09-jvmci-20.1-b02, mixed mode)
 bash-4.2# node
 > 1 + 1
 2
@@ -32,9 +32,9 @@ LLVM (GraalVM CE Native {{ site.product_version }})
 bash-4.2#
 ```
 
-Please note that the image contains only the components immediately available in the GraalVM CE distribution.
-However, the [GraalVM Updater utility]({{ "/docs/reference-manual/graal-updater/" | relative_url}}) is on the `PATH`.
-You can install the support for additional languages like Ruby, R, or Python at will.
+Please note that the image contains only the components immediately available in the GraalVM Community distribution.
+However, the [GraalVM Updater]({{ "/docs/reference-manual/graal-updater/" | relative_url}}) utility is on the `PATH`.
+You can install the support for additional languages like Ruby, R, Python or WebAssembly at will.
 For example, the following command installs the Ruby support (the output below is truncated for brevity):
 
 ```
