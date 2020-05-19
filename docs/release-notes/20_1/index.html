@@ -778,7 +778,17 @@ can compile long-running loops before the surrounding function is compiled.</li>
   </li>
   <li>Included GCC runtime libraries for supported systems (Linux and macOS)</li>
   <li>Removed GFortran as a requirement to run FastR.</li>
-  <li>The GFortran runtime libraries versions are 4.8.5 on Linux and 8.3.0 on macOS. When compiling additional R packages with Fortran code, one must use GFortran of the same or higher version.</li>
+  <li>The GFortran runtime libraries versions are 4.8.5 on Linux and 8.3.0 on macOS. When compiling additional R packages with Fortran code, one must use GFortran of the same or higher version.
+    <ul>
+      <li>There’s a known issue: the libgomp.1.dylib library is not distributed with FastR on MacOS. To workaround this issue: install GCC with the package manager of your choice, e.g., <code>brew install gcc</code>
+locate file <code>libgomp.1.dylib</code>. Variable <code>$GOMPLIB</code> will denote full path to this library and <code>$R_HOME</code>the path to R installation:
+<code>$GRAALVM_HOME/jre/languages/R</code> on JDK8 based builds
+<code>$GRAALVM_HOME/languages/R</code> on JDK11 based builds
+execute these two commands:
+<code>install_name_tool -change /cm/shared/apps/gcc/8.3.0/lib/libgomp.1.dylib $GOMPLIB $R_HOME/lib/libRblas.dylib</code>
+<code>install_name_tool -change /cm/shared/apps/gcc/8.3.0/lib/libgomp.1.dylib $GOMPLIB $R_HOME/lib/libRlapack.dylib</code></li>
+    </ul>
+  </li>
   <li>GFortran is now the default Fortran compiler even in the <a href="/docs/reference-manual/languages/r/#running-r-extensions">LLVM toolchain configuration</a>.</li>
   <li>Added support for <code>traceback()</code> to show frames from other GraalVM languages and C/C++ when run in the LLVM mode (<code>--R.BackEnd=llvm</code>).</li>
   <li>Improved interoperability with other languages: “@” and “$” can be used to access members of foreign polyglot objects.</li>
