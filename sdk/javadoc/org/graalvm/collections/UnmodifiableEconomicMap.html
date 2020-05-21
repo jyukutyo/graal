@@ -44,7 +44,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM SDK Java API Reference<br>20.2.0-dev</b><br>777aecf611c657512574e55087befbfdb4960ae8</div>
+<div class="aboutLanguage"><b>GraalVM SDK Java API Reference<br>20.2.0-dev</b><br>a635dd584a5c69ed3b5b8020c60ef091195aa43a</div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -105,7 +105,8 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public interface <span class="typeNameLabel">UnmodifiableEconomicMap&lt;K,V&gt;</span></pre>
-<div class="block">Unmodifiable memory efficient map data structure.</div>
+<div class="block">Unmodifiable memory efficient map. See <a href="../../../org/graalvm/collections/EconomicMap.html" title="interface in org.graalvm.collections"><code>EconomicMap</code></a> for the underlying data structure and
+ its properties.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>19.0</dd>
@@ -204,7 +205,7 @@ var activeTableTab = "activeTableTab";
 <h4>get</h4>
 <pre><a href="../../../org/graalvm/collections/UnmodifiableEconomicMap.html" title="type parameter in UnmodifiableEconomicMap">V</a>&nbsp;get(<a href="../../../org/graalvm/collections/UnmodifiableEconomicMap.html" title="type parameter in UnmodifiableEconomicMap">K</a>&nbsp;key)</pre>
 <div class="block">Returns the value to which <code>key</code> is mapped, or <code>null</code> if this map contains no
- mapping for <code>key</code>.</div>
+ mapping for <code>key</code>. The <code>key</code> must not be <code>null</code>.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>19.0</dd>
@@ -222,7 +223,7 @@ var activeTableTab = "activeTableTab";
 <pre>default&nbsp;<a href="../../../org/graalvm/collections/UnmodifiableEconomicMap.html" title="type parameter in UnmodifiableEconomicMap">V</a>&nbsp;get(<a href="../../../org/graalvm/collections/UnmodifiableEconomicMap.html" title="type parameter in UnmodifiableEconomicMap">K</a>&nbsp;key,
               <a href="../../../org/graalvm/collections/UnmodifiableEconomicMap.html" title="type parameter in UnmodifiableEconomicMap">V</a>&nbsp;defaultValue)</pre>
 <div class="block">Returns the value to which <code>key</code> is mapped, or <code>defaultValue</code> if this map
- contains no mapping for <code>key</code>.</div>
+ contains no mapping for <code>key</code>. The <code>key</code> must not be <code>null</code>.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>19.0</dd>
@@ -238,7 +239,8 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>containsKey</h4>
 <pre>boolean&nbsp;containsKey(<a href="../../../org/graalvm/collections/UnmodifiableEconomicMap.html" title="type parameter in UnmodifiableEconomicMap">K</a>&nbsp;key)</pre>
-<div class="block">Returns <code>true</code> if this map contains a mapping for <code>key</code>.</div>
+<div class="block">Returns <code>true</code> if this map contains a mapping for <code>key</code>. Returns always
+ <code>false</code> if the <code>key</code> is <code>null</code>.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>19.0</dd>
@@ -339,7 +341,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>GraalVM SDK Java API Reference<br>20.2.0-dev</b><br>777aecf611c657512574e55087befbfdb4960ae8</div>
+<div class="aboutLanguage"><b>GraalVM SDK Java API Reference<br>20.2.0-dev</b><br>a635dd584a5c69ed3b5b8020c60ef091195aa43a</div>
 </div>
 <div class="subNav">
 <ul class="navList">
