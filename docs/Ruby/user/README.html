@@ -454,7 +454,7 @@ $(document).ready(function(){
           
             
             <a href="/docs/Ruby/user/installing-llvm">
-              Installing LLVM
+              Installing Make and GCC
             </a>
           </li>
 
@@ -687,6 +687,15 @@ using a Ruby manager.</p>
 as a simple binary tarball.</p>
   </li>
 </ul>
+
+<p>We recommend trying TruffleRuby nightly builds which contain the latest fixes and improvements:</p>
+
+<pre><code class="language-bash">RVM:    $ rvm install truffleruby-head
+rbenv:  $ rbenv install truffleruby-dev
+chruby: $ ruby-build truffleruby-dev ~/.rubies/truffleruby-dev
+</code></pre>
+
+<p>See the <a href="/docs/Ruby/user/ruby-managers">Ruby installers</a> documentation for more details.</p>
 
 <p>Testing TruffleRuby in CI is easy:
 on <a href="https://docs.travis-ci.com/user/languages/ruby#truffleruby">TravisCI</a>, you can use:</p>

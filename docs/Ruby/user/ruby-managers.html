@@ -471,7 +471,7 @@ $(document).ready(function(){
           
             
             <a href="/docs/Ruby/user/installing-llvm">
-              Installing LLVM
+              Installing Make and GCC
             </a>
           </li>
 
@@ -708,7 +708,7 @@ installed as a plugin for <a href="https://github.com/rbenv/rbenv"><code>rbenv</
 definition. See <a href="https://github.com/rbenv/ruby-build#upgrading"><code>ruby-build</code>’s instructions for upgrading</a>.</p>
 
 <p>On macOS, if <code>ruby-build</code> is installed via Homebrew and you do not see the
-<a href="https://github.com/oracle/truffleruby/releases">latest TruffleRuby release</a>,
+<a href="https://github.com/oracle/truffleruby/releases/latest">latest TruffleRuby release</a>,
 you might need to install the HEAD version of <code>ruby-build</code> with:</p>
 
 <pre><code class="language-bash">$ brew reinstall --HEAD ruby-build
@@ -749,7 +749,10 @@ $ ruby-install truffleruby
 </code></pre>
 
 <p><code>ruby-install</code> does not support installing nightly builds.
-Please use <code>ruby-build</code> (which also works with <code>chruby</code>) if you want to install nightly builds.</p>
+Please use <code>ruby-build</code> (which also works with <code>chruby</code>) if you want to install nightly builds:</p>
+
+<pre><code class="language-bash">$ ruby-build truffleruby-dev ~/.rubies/truffleruby-dev
+</code></pre>
 
 <p>There are also instructions on the
 <a href="https://github.com/postmodern/chruby/wiki/TruffleRuby">chruby wiki</a>
