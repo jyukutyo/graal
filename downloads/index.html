@@ -289,7 +289,7 @@
         <div class="row no-gutters extra editions">
           <div class="col-sm-6">
             <div class="community">
-              <h2 class="additional-item__title">GraalVM Community 19.3.2 <a href="/downloads/annual-release/" style="color: #00758F;">Details  &#8594;</a></h2>
+              <h2 class="additional-item__title">GraalVM Community 19.3.2 <a href="https://www.graalvm.org/downloads/annual-release.html" style="color: #00758F;">Details  &#8594;</a></h2>
               <div class="additional-item__text">
               <ul class="additional-item__list">
                 <ul class="additional-item__list">
@@ -314,7 +314,7 @@
           </div>
           <div class="col-sm-6">
             <div class="enterprise">
-                <h2 class="additional-item__title">GraalVM Enterprise 19.3.2 <a href="/downloads/annual-release/" style="color: #00758F;">Details  &#8594;</a></h2>
+                <h2 class="additional-item__title">GraalVM Enterprise 19.3.2 <a href="https://www.graalvm.org/downloads/annual-release.html" style="color: #00758F;">Details  &#8594;</a></h2>
                 <div class="additional-item__text">
                   <ul class="additional-item__list">
                     <li>Free for evaluation and development</li>
@@ -347,7 +347,7 @@
       <div class="row no-gutters extra editions">
         <div class="col-sm-6">
           <div class="community">
-            <h2 class="additional-item__title">GraalVM Community 20.1.0 <a href="/downloads/current-release/" style="color: #00758F;">Details  &#8594;</a></h2>
+            <h2 class="additional-item__title">GraalVM Community 20.1.0 <a href="https://www.graalvm.org/downloads/current-release.html" style="color: #00758F;">Details  &#8594;</a></h2>
             <div class="additional-item__text">
             <ul class="additional-item__list">
               <ul class="additional-item__list">
@@ -372,7 +372,7 @@
         </div>
         <div class="col-sm-6">
           <div class="enterprise">
-              <h2 class="additional-item__title">GraalVM Enterprise 20.1.0 <a href="/downloads/current-release/" style="color: #00758F;">Details  &#8594;</a></h2>
+              <h2 class="additional-item__title">GraalVM Enterprise 20.1.0 <a href="https://www.graalvm.org/downloads/current-release.html" style="color: #00758F;">Details  &#8594;</a></h2>
               <div class="additional-item__text">
                 <ul class="additional-item__list">
                   <li>Free for evaluation and development</li>
@@ -492,57 +492,5 @@
     <script src="/resources/lib/twitter-fetcher.js"></script>
     <script src='/resources/lib/slick-slider/slick.min.js'></script>
     <script src='/resources/js/main.js'></script>
-    <script>
-
-      //Unfold and Fold GraalVM releases description on Downloads page
-         function openDescription() {
-            var opening=document.getElementById("description");
-            if (opening.style.display === "none") {
-              opening.style.display = "block";
-            } else {
-              opening.style.display = "none";
-            }
-          }
-          function closeDescription(){
-            var closing=document.getElementById("description");
-            if (opening.style.display === "block") {
-              opening.style.display = "none";
-            } else {
-              opening.style.display = "block";
-            }
-          }
-
-      //Switch between 19 and 20 branches on Downloads page
-          $('.download-tab').click(function() {
-            $('.download-tab').removeClass('active');
-            $(this).addClass('active');
-            var ix = $(this).index();
-
-            $('#tab-19').toggle(ix === 0);
-            $('#tab-20').toggle(ix === 1);
-          });
-      //Propagate GraalVM version selected in browser link ?selected_tab=19
-          // function getQueryArguments(url) {
-          // 	let args = null;
-          // 	if (url && url.indexOf("?") > -1) {
-          // 		let idx = url.indexOf("?");
-          // 		let argString = url.substring(idx+1);
-          // 		let argArray = argString.split("&");
-          // 		args = new Map();
-          // 		for (let i=0; i < argArray.length; i++) {
-          // 			let [key, value] = argArray[i].split("=");
-          // 			args.set(key, value);
-          // 		}
-          // 	}
-          // 	return args;
-          // }
-          // function getSelectedTab(defaultTab) {
-          // 	let args = getQueryArguments(window.location.href);
-          // 	if (args && args.get("selected_tab")) {
-          // 		return args.get("selected_tab");
-          // 	}
-          // 	return defaultTab;
-          // }
-
   </body>
 </html>
