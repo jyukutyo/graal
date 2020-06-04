@@ -1252,6 +1252,6 @@ $("a").each(function() {
       $(this).addClass('active');
       var ix = $(this).index();
 
-      $('#tab-19').toggle(ix === 0);
-      $('#tab-20').toggle(ix === 1);
+      $('#tab-20').toggle(ix === 0);
+      $('#tab-19').toggle(ix === 1);
     });
