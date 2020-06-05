@@ -5424,7 +5424,7 @@ main.content.content--home .title {
   z-index: 1; }
   @media (min-width: 576px) {
     .showcase-banner {
-      height: 100vh; } }
+      height: 80vh; } }
 
 .showcase {
   width: 100%; }
@@ -5823,14 +5823,14 @@ section.usecases .carousel-wrapp {
   border-color: transparent;
   box-shadow: 0 4px 10px rgba(210, 213, 223, 0.9);
   border-radius: 10px;
-  height: 225px;
+  height: fit-content;
   margin-top: 10px; }
   @media (min-width: 992px) {
     .latest-news .bottom .inner {
       height: fit-content; } }
   @media (max-width: 991.98px) {
     .latest-news .bottom .inner {
-      height: 225px; } }
+      height: fit-content; } }
   @media (max-width: 767.98px) {
     .latest-news .bottom .inner {
       height: fit-content; } }

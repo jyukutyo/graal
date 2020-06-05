@@ -1254,4 +1254,5 @@ $("a").each(function() {
 
       $('#tab-20').toggle(ix === 0);
       $('#tab-19').toggle(ix === 1);
+      $('#tab-nightly').toggle(ix === 2);
     });
