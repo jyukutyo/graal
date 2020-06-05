@@ -6025,6 +6025,13 @@ ol.features-list {
   margin-bottom: 10px;
   padding: 2px; }
 
+.col-sm-2.text-center.download-tab.nightly-build.active p.type {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 2px; }
+
 p.type {
   margin-bottom: 0;
   font-size: 16px;
