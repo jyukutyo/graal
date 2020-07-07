@@ -43,7 +43,7 @@ location="$( cd -P "$( dirname "$source" )" && pwd )"
 graalvm_home="${location}/../../.."
 
 function usage_and_exit() {
-    echo "Usage: $0 [--verbose] polyglot|libpolyglot|js|llvm|python|ruby|R... [custom native-image args]..."
+    echo "Usage: $0 [--verbose] polyglot|libpolyglot|js|llvm|python|ruby|R|wasm|*... [custom native-image args]..."
     exit 1
 }
 
@@ -54,6 +54,14 @@ for opt in "${@:1}"; do
     case "$opt" in
         polyglot|libpolyglot|js|llvm|python|ruby|R)
            to_build+=("${opt}")
+            ;;
+        \*)
+            to_build=("polyglot" "libpolyglot")
+            for component in $graalvm_home/lib/installer/components/*.component; do
+                if [[ "${component##*/}" =~ ^(.*\.)?([^-]*).*\.component$ && ${BASH_REMATCH[2]} != "native" ]]; then
+                    to_build+=("${BASH_REMATCH[2]}")
+                fi
+            done
             ;;
         --help|-h)
             echo "Rebuilds native images in place."
@@ -130,6 +138,9 @@ for binary in "${to_build[@]}"; do
             ;;
         R)
             launcher RMain
+            ;;
+        wasm)
+            launcher wasm
             ;;
         *)
             echo "shouldNotReachHere()"
